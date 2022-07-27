@@ -1,0 +1,57 @@
+.Avada-Switch {
+  position: relative;
+  display: inline-block;
+  width: 39px;
+  height: 25px;
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .Avada-Switch_Checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .Avada-Switch_Slider {
+      background-color: #166ce1;
+    }
+    &:checked + .Avada-Switch_Slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  }
+
+  .Avada-Switch_Slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    border-radius: 15px;
+
+    &:before {
+      position: absolute;
+      content: '';
+      height: 21px;
+      width: 21px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 50%;
+      -webkit-transition: 0.3s;
+      transition: 0.3s;
+    }
+
+    &.right:before {
+      left: -10px;
+    }
+
+    &.left:before {
+      left: 2px;
+    }
+  }
+}

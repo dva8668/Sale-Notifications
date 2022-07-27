@@ -1,0 +1,84 @@
+.avada-promo-card-small,
+.avada-promo-card-sidebar {
+  text-align: center;
+}
+
+.avada-promo-card-bottom {
+  max-width: 700px;
+  margin: 2rem auto 0;
+}
+
+.avada-promo-card-slim {
+  width: 100%;
+  margin: 2rem auto 0;
+}
+
+.avada-promo-card-slim .promo-left {
+  display: flex;
+  align-items: center;
+}
+
+.avada-promo-card-slim .Polaris-Card__Section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.avada-promo-card-slim .promo-right {
+  text-align: center;
+}
+
+.avada-promo-card-slim .promo-right a {
+  color: #006fbb;
+  text-decoration: none;
+}
+
+.avada-promo-card-slim .promo-right a:hover {
+  text-decoration: underline;
+}
+
+.avada-promo-card-large .Polaris-Card__Section {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.avada-promo-card-large .promo-left {
+  display: flex;
+  align-items: center;
+  margin-left: 5rem;
+}
+
+.avada-promo-card-large .promo-right {
+  text-align: center;
+  margin-right: 3rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .avada-promo-card-large .promo-left {
+    margin-left: 0;
+  }
+
+  .avada-promo-card-large .promo-right {
+    text-align: center;
+    margin-right: 0;
+  }
+
+  .avada-promo-card-large .promo-left ul {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .avada-promo-card-large .promo-left {
+    margin-left: 0;
+  }
+}
+
+.avada-promo-card {
+  margin-top: 1rem;
+}
+
+.avada-promo-card img.avada-stars {
+  width: 15px;
+  margin-right: 0.5rem;
+}

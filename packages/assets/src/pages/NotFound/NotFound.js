@@ -10,6 +10,7 @@ import {EmptyState, Layout, Page} from '@shopify/polaris';
 export default function NotFound() {
   return (
     <Page
+      fullWidth
       title="Not Found"
       primaryAction={{
         content: 'Back to Home',

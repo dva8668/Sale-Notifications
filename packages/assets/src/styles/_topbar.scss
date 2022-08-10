@@ -1,16 +1,16 @@
 .Polaris-TopBar {
-  background-color: #0b4697;
+  background-color: #fff;
 
   .Polaris-TopBar-Menu__Activator:hover,
   .Polaris-TopBar-Menu__Activator:active,
   .Polaris-TopBar-Menu__Activator[aria-expanded='true'] {
-    background-color: #272f5f;
+    opacity: 1.2;
   }
 
   .Polaris-TopBar-UserMenu__Details {
     .Polaris-TopBar-UserMenu__Name,
     .Polaris-TopBar-UserMenu__Detail {
-      color: #fff;
+      color: #000;
     }
   }
 
@@ -20,5 +20,5 @@
 }
 
 .Polaris-Frame__Navigation .Polaris-Navigation__LogoContainer {
-  background: #0b4697;
+  background: #ffffff;
 }

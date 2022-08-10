@@ -1,12 +1,11 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {Frame, Loading, Navigation, Toast, TopBar} from '@shopify/polaris';
 import {
-  ChatMajor,
   HomeMajor,
   InfoMinor,
   LogOutMinor,
   SettingsMinor,
-  ViewMinor
+  NotificationMajor
 } from '@shopify/polaris-icons';
 import PropTypes from 'prop-types';
 import {detectShop, getRawSupport, shop} from '../../helpers';
@@ -50,17 +49,12 @@ function AppLayout({children, layout, logout, location, history, closeToast}) {
     setIsLogoutModal(false);
   }, []);
 
-  const handleOpenLogoutModal = useCallback(() => {
-    setIsLogoutModal(true);
-  }, []);
-
   const userMenuActions = [
     {
       items: [
         {
           content: 'Help desk',
           icon: InfoMinor,
-          url: 'https://help.avada.io/en-us/category/pdf-invoice-bu5nt0/',
           external: true
         }
       ]
@@ -69,8 +63,7 @@ function AppLayout({children, layout, logout, location, history, closeToast}) {
       items: [
         {
           content: 'Log out',
-          icon: LogOutMinor,
-          onAction: handleOpenLogoutModal
+          icon: LogOutMinor
         }
       ]
     }
@@ -101,11 +94,10 @@ function AppLayout({children, layout, logout, location, history, closeToast}) {
   const navigationMarkup = (
     <Navigation location="/">
       <Navigation.Section
-        title="Primary menu"
         separator
         items={[
           {
-            label: 'Dashboard',
+            label: 'Home',
             icon: HomeMajor,
             selected: location.pathname === '/',
             url: '/',
@@ -114,47 +106,16 @@ function AppLayout({children, layout, logout, location, history, closeToast}) {
             }
           },
           {
-            label: 'Samples',
+            label: 'Notifications',
+            icon: NotificationMajor,
+            url: '/notifications',
+            selected: location.pathname.startsWith('/notifications')
+          },
+          {
+            label: 'Setting',
             icon: SettingsMinor,
-            url: '/samples',
-            selected: location.pathname.startsWith('/samples')
-          }
-        ]}
-      />
-      <Navigation.Section
-        title="Help center"
-        fill
-        action={{
-          onClick: () => {
-            window.open(`https://${detectShop()}`, '_blank');
-          },
-          icon: ViewMinor
-        }}
-        separator
-        items={[
-          {
-            label: 'Help desk',
-            icon: InfoMinor,
-            onClick: () => {
-              window.open(
-                'https://help.avada.io/en-us/category/pdf-invoice-bu5nt0/',
-                '_blank'
-              );
-            }
-          },
-          {
-            label: 'Live chat',
-            icon: ChatMajor,
-            onClick: getRawSupport
-          }
-        ]}
-      />
-      <Navigation.Section
-        items={[
-          {
-            label: 'Log out',
-            icon: LogOutMinor,
-            onClick: handleOpenLogoutModal
+            url: '/settings',
+            selected: location.pathname.startsWith('/settings')
           }
         ]}
       />

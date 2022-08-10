@@ -7,7 +7,13 @@ import path from 'path';
 import createErrorHandler from '../middleware/errorHandler';
 import firebase from 'firebase-admin';
 import * as errorService from '../services/errorService';
-import api from "./api";
+import api from './api';
+import {syncNotifications, syncDefaultSettings} from '../services/syncService';
+import {
+  getByShopifyDomain,
+  createWebHook,
+  createScriptTag
+} from '../repositories/shopRepository';
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp();
@@ -41,7 +47,37 @@ app.use(
     },
     scopes: shopifyConfig.scopes,
     secret: shopifyConfig.secret,
-    successRedirect: '/dashboard'
+    successRedirect: '/',
+    afterInstall: async ctx => {
+      try {
+        const shopifyDomain = ctx.state.shopify.shop;
+        const shop = await getByShopifyDomain(shopifyDomain);
+        await Promise.all([
+          syncDefaultSettings({
+            shopId: shop.id,
+            shopifyDomain
+          }),
+          syncNotifications({
+            shopifyDomain,
+            shopId: shop.id,
+            accessToken: shop.accessToken
+          }),
+          createWebHook({
+            shopifyDomain,
+            accessToken: shop.accessToken
+          }),
+          createScriptTag({
+            shopifyDomain,
+            accessToken: shop.accessToken
+          })
+        ]);
+      } catch (e) {
+        ctx.body = {
+          success: false,
+          error: e.message
+        };
+      }
+    }
   }).routes()
 );
 

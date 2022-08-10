@@ -1,17 +1,6 @@
 import {useEffect, useState} from 'react';
-import {api} from '../../helpers';
+import api from '../../helpers';
 
-/**
- * useFetchApi hook for fetch data from api with url
- *
- * @param url
- * @param defaultData
- * @param presentDataFunc
- * @param initLoad
- * @param method
- * @param postData
- * @returns {{pagination: {}, data: *[], setData: (value: (((prevState: *[]) => *[]) | *[])) => void, setLoading: (value: (((prevState: boolean) => boolean) | boolean)) => void, refetch: (function(*=): Promise<void>), loading: boolean, setErrors: (value: (((prevState: *[]) => *[]) | *[])) => void, errors: *[], fetched: boolean}}
- */
 export default function useFetchApi(
   url,
   defaultData = [],
@@ -32,9 +21,12 @@ export default function useFetchApi(
     }
     setLoading(true);
     try {
-      const resp = method === 'GET' ? await api(url) : await api(url, postData, method);
+      const resp =
+        method === 'GET' ? await api(url) : await api(url, postData, method);
       if (resp.data) {
-        const newData = presentDataFunc ? presentDataFunc(resp.data) : resp.data;
+        const newData = presentDataFunc
+          ? presentDataFunc(resp.data)
+          : resp.data;
         setData(newData);
       }
       if (resp.pagination) setPagination(resp.pagination);
@@ -58,7 +50,9 @@ export default function useFetchApi(
       setLoading(true);
       const resp = await api(url);
       if (resp.data) {
-        const newData = presentDataFunc ? presentDataFunc(resp.data) : resp.data;
+        const newData = presentDataFunc
+          ? presentDataFunc(resp.data)
+          : resp.data;
         setData(newData);
         if (resp.pagination) setPagination(resp.pagination);
 

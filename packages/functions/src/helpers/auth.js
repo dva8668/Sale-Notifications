@@ -26,6 +26,6 @@ export function getCurrentShop(ctx) {
  * @param ctx
  * @returns {*}
  */
-export function getCurrentUserInstance(ctx) {
+export default function getCurrentUserInstance(ctx) {
   return ctx.state.user;
 }

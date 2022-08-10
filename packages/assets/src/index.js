@@ -8,7 +8,7 @@ import createStore from './reducers/createStore';
 import {setUser} from './actions/layout/setUserAction';
 import {auth, history} from './helpers';
 
-const store = createStore(history);
+export const store = createStore(history);
 
 window.isAuthenticated = false;
 

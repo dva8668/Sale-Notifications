@@ -35,7 +35,7 @@ export const client = axios.create({
  * @param {object} options
  * @return {*}
  */
-export async function api(
+async function api(
   url,
   method = 'GET',
   data = {},
@@ -58,7 +58,7 @@ export async function api(
     })
     .then(res => res.data);
 }
-
+export default api;
 /**
  * Detect shop from the current environment
  *
@@ -73,3 +73,4 @@ export const getRawSupport = () => {
 };
 
 export const shop = detectShop();
+

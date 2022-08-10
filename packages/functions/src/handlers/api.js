@@ -7,6 +7,7 @@ import path from 'path';
 
 // Initialize all demand configuration for an application
 const api = new App();
+
 api.proxy = true;
 render(api, {
   cache: true,

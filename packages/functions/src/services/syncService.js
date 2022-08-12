@@ -31,10 +31,10 @@ export async function syncNotifications({shopifyDomain, shopId, accessToken}) {
     accessToken,
     ids
   });
-  const getNotifications = getNotificationFromShopify({orders, products});
+  const notificationData = getNotificationFromShopify({orders, products});
 
   return Promise.all(
-    getNotifications.map(notification =>
+    notificationData.map(notification =>
       addNotification({shopId, shopifyDomain, data: notification})
     )
   );

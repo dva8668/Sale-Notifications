@@ -5,7 +5,7 @@ import {checkIfExists} from '../helpers/checkIfExists';
 const firestore = new Firestore();
 const shopCollection = firestore.collection('shops');
 const webhookAdress =
-  'https://1feb-117-6-131-199.ap.ngrok.io/webhook/order/new';
+  'https://b289-117-6-131-199.ap.ngrok.io/webhook/order/new';
 const ScripttagUrl = 'https://localhost:3000/scripttag/avada-sale-pop.min.js';
 
 export async function getByShopifyDomain(shopifyDomain) {

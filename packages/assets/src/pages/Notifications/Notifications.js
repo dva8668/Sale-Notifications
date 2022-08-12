@@ -108,12 +108,12 @@ function Notifications() {
       </Layout>
       <div style={{padding: '10px'}}>
         <Pagination
-          hasPrevious
+          // hasPrevious
           previousTooltip="0"
           onPrevious={previousTooltip => {
             console.log(previousTooltip);
           }}
-          hasNext
+          // hasNext
           nextTooltip="2"
           onNext={nextTooltip => {
             console.log(nextTooltip);

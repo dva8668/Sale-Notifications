@@ -22,6 +22,7 @@ export default class DisplayManager {
       })
     )
       return;
+
     return await this.showPopup({
       notifications,
       settings,

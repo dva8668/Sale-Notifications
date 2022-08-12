@@ -52,6 +52,7 @@ app.use(
       try {
         const shopifyDomain = ctx.state.shopify.shop;
         const shop = await getByShopifyDomain(shopifyDomain);
+        if(!shop) return;
         await Promise.all([
           syncDefaultSettings({
             shopId: shop.id,

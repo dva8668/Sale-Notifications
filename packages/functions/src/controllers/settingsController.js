@@ -22,8 +22,7 @@ export async function putSettings(ctx) {
   try {
     const requestData = ctx.req.body;
     const {shopID} = getCurrentUserInstance(ctx);
-    await updatesSetting(shopID, requestData);
-
+    const data = await updatesSetting(shopID, requestData);
     return (ctx.body = {
       success: true
     });

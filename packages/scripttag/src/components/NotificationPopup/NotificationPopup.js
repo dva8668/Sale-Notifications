@@ -23,7 +23,11 @@ const NotificationPopup = ({
     >
       <div className="Avava-SP__Inner">
         <div className="Avava-SP__Container">
-          <a href={productUrl} className={'Avava-SP__LinkWrapper'}>
+          <a
+            href={productUrl}
+            className={'Avava-SP__LinkWrapper'}
+            target="_blank"
+          >
             <div
               className="Avava-SP__Image"
               style={{
